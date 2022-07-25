@@ -28,27 +28,29 @@ jobs:
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
           # Applied to PRs opened locally and/or from a fork
-          fromlocal: true
-          fromfork: true
+          fromLocal: true
+          fromFork: true
           # Applied to PRs opened by user categories (anyone, contributors, explicit list of users)
-          byall: true
-          bycontributors: false
-          byusers: null
+          byAll: true
+          byContributors: false
+          byUsers: null
           # What files are allowed on a PR {{prOpenerName}} will be replaced with a PR opener username
-          allowfileschange: [ 'submissions/{{prOpenerName}}/*/*.{js|html|css|scss}' ]
+          allowFilesPaths: [ 'submissions/{{prOpenerName}}/*/*.{js|html|css|scss}' ]
+          # To what depth filepaths should be identical
+          pathIdentityDepth: 3
           # Max number of changed files allowed
-          maxfileschanged: 3
+          maxFilesChanged: 3
           # Checks if other PRs suggest changes to the same files as current PR (warning)
-          checkcompetingprs: true
+          checkCompetingPRs: true
           # Reporting templates
-          onsuccess: 'No issues detected. This doesn't mean there are not any. You may want to check [files](./files) for thorough checks.\n\n{{summary}}'
-          onfailure: 'There are {{issuesCount}} issue(s) detected.\n\n{{summary}}\n\n<details><summary>CLICK ME</summary>\n<p>\n\n{{detailsPerFile}}\n\n</p></details>'
+          onSuccess: 'No issues detected. This doesn't mean there are not any. You may want to check [files](./files) for thorough checks.\n\n{{summary}}'
+          onFailure: 'There are {{issuesCount}} issue(s) detected.\n\n{{summary}}\n\n<details><summary>CLICK ME</summary>\n<p>\n\n{{detailsPerFile}}\n\n</p></details>'
           # Labels to apply based on status
           # - you need the following labels being defined on the targeted repo
-          labelsuccess: pr-validation-passed
-          labelfailure: pr-validation-failed
+          labelSuccess: pr-validation-passed
+          labelFailure: pr-validation-failed
           # - disables validation checks when assigned on a PR
-          labeldisabled: pr-validation-disabled
+          labelDisabled: pr-validation-disabled
 ```
 
 ## Helpful Related Resources and GitHub Actions
