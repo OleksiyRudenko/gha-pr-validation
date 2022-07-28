@@ -4,11 +4,14 @@ GitHub action to provide pull request validation
 Features:
 - Allowed pathname patterns (may include depth restrictions, submitter's username) + label when disallowed file types added
 - Makes sure that certain part of pathnames is same across all files (helpful to avoid mixing up with other PRs)
-- Checks if other PR contains some of the changes already
+- Checks if any other PR contains some of the changes to the same files already
+- Checks if a source branch is not in deny list (e.g. `master`, `main`) or follows specific pattern (e.g. refers an issue number, contains username etc)
 - Files count, bytesize and LOC changed count metrics for warnings 
 - Files in PR stats: count, bytesize, LOCs count, LOCs changed, changes percentage
 - Labeler GHA to label PR size: XS through XL
 - Per file stats (in a foldable section): pathname, bytesize, LOC count, LOC changed
+- Errors require changes
+- Warnings do not block merging
 - Runs on every PR update
 
 ## Table of contents
